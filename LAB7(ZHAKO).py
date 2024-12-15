@@ -1,81 +1,58 @@
-import pickle
+class Vehicle:
+    def __init__(self, color="", year="", hp="", speed_limit="", mpg=""):
+        self.color = color
+        self.year = year
+        self.hp = hp
+        self.speed_limit = speed_limit
+        self.mpg = mpg
 
-
-class CourseGrade:
-    def __init__(self):
-        self.course_name = ""
-        self.stu_ID = []   # stu_ID = []
-        self.grades = []  # grades = []
-
-    def __str__(self):
-        return f"{self.course_name}: IDs {self.stu_ID}, Grades {self.grades}"
-
-    def get_details(self):
-        self.course_name = input("Enter the name of the course: ")
-        for i in range(0, 5):
-            self.stu_ID.append(input("Enter Student's ID: "))
-        for i in range(0, 5):
-            self.grades.append(int(input("Enter Student's Grade (0-100): ")))
+    def create_vehicle(self):
+        self.color = input("Enter Vehicle's color: ")
+        self.year = input("Enter Vehicle's year of manufacturing: ")
+        self.hp = input("Enter Vehicle's horsepower: ")
+        self.speed_limit = input("Enter Vehicle's maximum speed: ")
+        self.mpg = input("Enter Vehicle's efficiency in miles per gallon: ")
 
     def display(self):
-        print("Name of the course:", self.course_name)
-        print("Student ID:", self.stu_ID)
-        print("Student's grades:", self.grades)
+        print("Vehicle's Color:", self.color)
+        print("Vehicle's Year:", self.year)
+        print("Vehicle's Horsepower:", self.hp)
+        print("Vehicle's Speed Limit:", self.speed_limit)
+        print("Vehicle's MPG:", self.mpg)
 
 
-def main():
-    file_name = "grades_info.dat"
-    courses = []
+class Truck(Vehicle):
+    def __init__(self, color="", year="", hp="", speed_limit="", mpg="", stopping_distance="", max_towing="", height_modes=""):
+        super().__init__(color, year, hp, speed_limit, mpg)
+        self.stopping_distance = stopping_distance
+        self.max_towing = max_towing
+        self.height_modes = height_modes
+
+    def create_truck(self):
+        self.create_vehicle()
+        self.stopping_distance = input("Enter Truck's Stopping Distance: ")
+        self.max_towing = input("Enter Truck's Maximum Towing: ")
+        self.height_modes = input("Enter Truck's Height Modes: ")
+
+    def display(self):
+        super().display()
+        print("Truck's Stopping Distance:", self.stopping_distance)
+        print("Truck's Max Towing:", self.max_towing)
+        print("Truck's Height Modes:", self.height_modes)
 
 
-    for i in range(4):
-        print(f"Enter details for Course {i + 1}:")
-        course = CourseGrade()
-        course.get_details()
-        courses.append(course)
+class TowTruck(Truck):
+    def __init__(self, color="", year="", hp="", speed_limit="", mpg="", stopping_distance="", max_towing="", height_modes="", towing_capacity="", curb_weight="", hitch_weight=""):
+        super().__init__(color, year, hp, speed_limit, mpg, stopping_distance, max_towing, height_modes)
+        self.towing_capacity = towing_capacity
+        self.curb_weight = curb_weight
+        self.hitch_weight = hitch_weight
 
+    def create_tow_truck(self):
+        self.create_truck()
+        self.towing_capacity = input("Enter Tow Truck's Capacity: ")
+        self.curb_weight = input("Enter Tow Truck's Curb Weight: ")
+        self.hitch_weight = input("Enter Tow Truck's Hitch Weight: ")
 
-    with open(file_name, "ab") as f:
-        for course in courses:
-            pickle.dump(course, f)
-    print("\nCourses saved to file!")
-
-
-    print("\nReading courses from the file...")
-    try:
-        with open(file_name, "rb") as f:
-            while True:
-                try:
-                    course = pickle.load(f)
-                    course.display()
-                except EOFError:
-                    break
-                except Exception as e:
-                    print(f"An error occurred while reading the file: {e}")
-    except FileNotFoundError:
-        print(f"Error: The file '{file_name}' does not exist.")
-        main()
-
-    def main():
-        file_name = "grades_info.dat"
-        while True:
-            print("\nMenu:")
-            print("1. Create and Save 4 Courses")
-            print("2. Read and Display Courses from File")
-            print("3. Exit")
-            option = input("Enter your choice (1-3): ")
-
-            if option == "1":
-                courses = create_courses()
-                save_courses_to_file(courses, file_name)
-            elif option == "2":
-                courses = read_courses_from_file(file_name)
-                display_courses(courses)
-            elif option == "3":
-                print("Exiting the program")
-                break
-            else:
-                print("Invalid choice! Please enter 1, 2, or 3.")
-
-    if __name__ == "__main__":
-        main()
+    def display_tow_truck(self):
+        super().display()
