@@ -1,0 +1,22 @@
+class User:
+    def __init__(self):
+        self.user_id = ""
+        self.name = ""
+        self.password = ""
+        self.address = ""
+        self.phone = ""
+        self.email_id = ""
+
+    def create_user(self):
+        self.user_id = input("Enter User's ID: ")
+        self.name = input("Enter User's Name: ")
+        self.password = input("Enter User's Password: ")
+        self.address = input("Enter User's Address: ")
+        self.phone = input("Enter User's Phone Number: ")
+        self.email_id = input("Enter User's Email ID: ")
+
+    def display_user(self):
+        print(f"ID: {self.user_id}, Name: {self.name}, Address: {self.address}, Phone: {self.phone}, Email: {self.email_id}")
+
+user1 = User()
+user1.create_user()
