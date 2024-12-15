@@ -1,0 +1,195 @@
+from vehicles import TowTruck, Tanker, TractorTrailer, SUV, Sedan, Coupe, Chopper
+
+class User:
+    def __init__(self):
+        self.user_id = ""
+        self.name = ""
+        self.password = ""
+        self.address = ""
+        self.phone = ""
+        self.email_id = ""
+
+    def create_user(self):
+        self.user_id = input("Enter User's ID: ")
+        self.name = input("Enter User's Name: ")
+        self.password = input("Enter User's Password: ")
+        self.address = input("Enter User's Address: ")
+        self.phone = input("Enter User's Phone Number: ")
+        self.email_id = input("Enter User's Email ID: ")
+
+    def display_user(self):
+        print(f"ID: {self.user_id}, Name: {self.name}, Address: {self.address}, Phone: {self.phone}, Email: {self.email_id}")
+
+user1 = User()
+user1.create_user()
+
+class User:
+    def __init__(self):
+        self.user_id = ""
+        self.name = ""
+        self.password = ""
+        self.address = ""
+        self.phone = ""
+        self.email_id = ""
+
+    def create_user(self):
+        self.user_id = input("Enter User's ID: ")
+        self.name = input("Enter User's Name: ")
+        self.password = input("Enter User's Password: ")
+        self.address = input("Enter User's Address: ")
+        self.phone = input("Enter User's Phone Number: ")
+        self.email_id = input("Enter User's Email ID: ")
+
+    def display_user(self):
+        print(f"ID: {self.user_id}, Name: {self.name}, Address: {self.address}, Phone: {self.phone}, Email: {self.email_id}")
+
+class LendingVehicle:
+    def __init__(self):
+        self.lend_vehicle = ""
+        self.vehicle_id = ""
+        self.user_id = ""
+        self.date_of_lending = ""
+        self.date_of_return = ""
+
+    def create_lending_vehicles(self):
+        self.lend_vehicle = input("Enter Lending ID: ")
+        self.vehicle_id = input("Enter vehicle ID of the lending vehicle: ")
+        self.user_id = input("Enter User's ID: ")
+        self.date_of_lending = input("Enter date of lending (MM-DD-YYYY): ")
+        self.date_of_return = input("Enter date of return (MM-DD-YYYY): ")
+
+    def display_lending_books(self):
+        print(f"Lending ID: {self.lend_vehicle}, Vehicle ID: {self.vehicle_id}, User ID: {self.user_id}, Date of Lending: {self.date_of_lending}, Date of Return: {self.date_of_return}")
+
+My_Tow_Truck_Objects=[]
+My_Tanker_Objects=[]
+My_Tractor_Objects=[]
+My_SUV_Objects=[]
+My_Sedan_Objects = []
+MY_Coupe_Objects = []
+My_Chopper_Objects = []
+while 1:
+    print("Welcome to the JBU car dealership, what would you like to do")
+    print("1. Add a vehicle (Only for administration): ")
+    print("2. Display vehicles:")
+    print("3. Borrow a vehicle")
+    print("5. Exit")
+    Option = input("Please enter your desired action: ")
+    if Option == "5":
+        break
+    if Option == "1":
+            print("Please choose the vehicle type you're adding: ")
+            print("1. Truck")
+            print("2. Car")
+            print("3. Motorcycle")
+            print("4. Return")
+            Option1 = input()
+            if Option1 =="1":
+                    print("Select the type: ")
+                    print("1. Tow truck")
+                    print("2. Tankers")
+                    print("3. Tractors")
+                    print("4. Return")
+                    Option2 = input()
+                    if Option2 == "1":
+                        tt = TowTruck()
+                        tt.create_tow_truck()
+                        My_Tow_Truck_Objects.append(tt)
+                    if Option2 == "2":
+                        t = Tanker()
+                        t.create_tanker()
+                        My_Tanker_Objects.append(t)
+                    if Option2 == "3":
+                        tr = TractorTrailer()
+                        tr.create_tractor_trailer()
+                        My_Tractor_Objects.append(tr)
+            if Option1 == "2":
+                print("Select the type: ")
+                print("1. SUV")
+                print("2. Sedan")
+                print("3. Coupe")
+                print("4. Return")
+                Option2 = input()
+                if Option2 == "1":
+                    s = SUV()
+                    s.create_suv()
+                    My_SUV_Objects.append(s)
+                if Option2 == "2":
+                    se = Sedan()
+                    se.create_sedan()
+                    My_Sedan_Objects.append(se)
+                if Option2 == "3":
+                    c = Coupe()
+                    c.create_coupe()
+                    MY_Coupe_Objects.append(c)
+            if Option1 == "3":
+                print("Select the type: ")
+                print("1. Chopper")
+                Option2 = input()
+                if Option2 == "1":
+                    ch = Chopper()
+                    ch.create_chopper()
+                    My_Chopper_Objects.append(ch)
+            if Option1 == "4":
+                break
+    if Option == "2":
+        while 2:
+            print("Please select the class of vehicle:")
+            print("1. Truck")
+            print("2. Car")
+            print("3. Motorcycle")
+            print("4. Return")
+            Option1 = input()
+            if Option1 == "1":
+                while 3:
+                    print("Select the type: ")
+                    print("1. Tow truck")
+                    print("2. Tankers")
+                    print("3. Tractors")
+                    print("4. Return")
+                    Option2 = input()
+                    if Option2 == "1":
+                        for tt in My_Tow_Truck_Objects:
+                            tt.display_tow_truck()
+                    if Option2 == "2":
+                        for t in My_Tanker_Objects:
+                            t.display_tanker()
+                    if Option2 == "3":
+                        for tr in My_Tractor_Objects:
+                            tr.display_tractor()
+                    if Option2 == "4":
+                         break
+            if Option1 == "2":
+                print("Select the type: ")
+                print("1. SUV")
+                print("2. Sedan")
+                print("3. Coupe")
+                print("4. Return")
+                Option2 = input()
+                if Option2 == "1":
+                    for s in My_SUV_Objects:
+                        s.display_SUV()
+                if Option2 == "2":
+                    for se in My_Sedan_Objects:
+                        se.display_sedan()
+                if Option2 == "3":
+                    for c in MY_Coupe_Objects:
+                        c.display_coupe()
+                if Option2 == "4":
+                    break
+            if Option1 == "3":
+                print("Select the type: ")
+                print("1. Chopper")
+                Option2 = input()
+                if Option2 == "1":
+                    for ch in My_Chopper_Objects:
+                        ch.display_chopper()
+            if Option1 == "4":
+                break
+    if Option == "3":
+        while 2:
+            print("Choose a vehicle type to borrow: ")
+            print("1. Truck")
+            print("2. Car")
+            print("3. Motorcycle")
+            print("4. Return")
